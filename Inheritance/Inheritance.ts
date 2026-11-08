@@ -37,8 +37,12 @@ export class Car{
 }
 
 class ElectricCar extends Car {
-    batteryCapacity: number;    
-
+    batteryCapacity: number; 
+    
+    //Passing in the constructor — just means the values arrive at the door. They're sitting in the function parameters but aren't stored anywhere yet.
+    //super(...) — actually sends those values to the parent class so it can store them in this.name, this.model, this.color.
+    //If you skip super(), the parent never receives those values and TypeScript will give you an error.
+    
     constructor(name: string, model: string, color: string, batteryCapacity: number) {
         super(name, model, color); // Call the constructor of the superclass (Car)
         this.batteryCapacity = batteryCapacity;
@@ -90,13 +94,13 @@ This is valid because every ElectricCar is a Car.
 2.Think of it like a label: You're putting a general "Car" label on something that's actually a more specific "ElectricCar." 
 The object inside is still fully an ElectricCar, but you're choosing to look at it through the lens of a Car.
 
-3.Overridden methods still work: On line 84, calling car.displayDetails() runs ElectricCar's version, not Car's. 
+3.Overridden methods still work: On line 108, calling car.displayDetails() runs ElectricCar's version, not Car's.
 The actual object decides which method runs, not the variable type.
 
-4.Parent methods work too: On line 85, car.startEngine() works fine because startEngine() is defined on Car, 
+4.Parent methods work too: On line 109, car.startEngine() works fine because startEngine() is defined on Car,
 and ElectricCar inherits it.
 
-5.Child-only methods are blocked: On line 86, car.startElectricEngine() gives an error. 
+5.Child-only methods are blocked: On line 110, car.startElectricEngine() gives an error.
 Since the variable type is Car, TypeScript only lets you access things Car knows about — even though the actual object has that method.
 */
 

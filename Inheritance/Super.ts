@@ -35,3 +35,6 @@ console.log(luxuryCar.startLuxuryEngine()); // Output: Mercedes-Benz S-Class eng
 
 
 //***As both Inheritance.ts and Super.ts are connected we are getting the output of all the classes in Inheritance.ts and Super.ts.
+//The issue is line 1: import { Car } from './Inheritance' When you run Super.ts, TypeScript executes the entire Inheritance.ts file as a side effect of importing from it. That means all the console.log statements in Inheritance.ts (lines 83, 86, 108, 109) run too — not just the LuxuryCar code in Super.ts.
+//Why? In TypeScript/JavaScript, import runs the entire imported file. It doesn't just grab the Car class — it runs every line of code at the top level, including all the console.log calls.
+
