@@ -1,5 +1,3 @@
-export {}; // Makes this file a module to avoid global scope conflicts
-
 /*
 An interface in typescript is a way to define the structure of an object
 It tells the compiler what types of properties and types an object should have
